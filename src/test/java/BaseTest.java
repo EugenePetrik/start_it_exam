@@ -40,13 +40,15 @@ public class BaseTest {
 
         if (platform.equals(Platform.ANDROID)) {
             File classPathRoot = new File(System.getProperty("user.dir"));
-            File appDir = new File(classPathRoot, "/app");
+            File appDir = new File(classPathRoot, "/app/Android");
             File app = new File(appDir, "maven.apk");
 
             DesiredCapabilities desiredCapabilities = new DesiredCapabilities();
             desiredCapabilities.setCapability(MobileCapabilityType.PLATFORM_NAME, MobilePlatform.ANDROID);
             desiredCapabilities.setCapability(MobileCapabilityType.DEVICE_NAME, "Google Nexus");
             desiredCapabilities.setCapability(MobileCapabilityType.APP, app);
+            desiredCapabilities.setCapability("appPackage", "com.medicom.maven.debug");
+            desiredCapabilities.setCapability("appActivity", "com.medicom.maven.activity.StartActivity");
             desiredCapabilities.setCapability("newCommandTimeout", 300);
 
             driver = new AndroidDriver<>(remoteAddress, desiredCapabilities);
