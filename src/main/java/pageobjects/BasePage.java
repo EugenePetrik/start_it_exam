@@ -4,7 +4,10 @@ import enums.Platform;
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileElement;
 import io.appium.java_client.pagefactory.AppiumFieldDecorator;
+import org.openqa.selenium.Dimension;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 public abstract class BasePage {
 
@@ -18,6 +21,11 @@ public abstract class BasePage {
 
     public void hideKeyboard() {
         driver.hideKeyboard();
+    }
+
+    public void waitForElement(MobileElement element) {
+        WebDriverWait wait = new WebDriverWait(driver, 15);
+        wait.until(ExpectedConditions.elementToBeClickable(element));
     }
 
     public abstract BasePage initializePage();

@@ -12,9 +12,33 @@ public class LoginPage extends BasePage {
     @AndroidFindBy(id = "com.medicom.maven.debug:id/sign_up")
     private MobileElement signUpButton;
 
+    @AndroidFindBy(id = "com.medicom.maven.debug:id/username")
+    private MobileElement usernameFiled;
+
+    @AndroidFindBy(id = "com.medicom.maven.debug:id/password")
+    private MobileElement userPasswordField;
+
+    @AndroidFindBy(id = "com.medicom.maven.debug:id/login")
+    private MobileElement logInButton;
+
     public LoginPage closePopUp() {
         closePopup.click();
         return this;
+    }
+
+    public LoginPage fillUserEmail(String userEmail) {
+        usernameFiled.setValue(userEmail);
+        return this;
+    }
+
+    public LoginPage filUserPassword(String userPassword) {
+        userPasswordField.setValue(userPassword);
+        return this;
+    }
+
+    public InfoPage clickTheButtonLogIn() {
+        logInButton.click();
+        return new InfoPage(driver);
     }
 
     public RegisterPage clickToSignUpButton() {
