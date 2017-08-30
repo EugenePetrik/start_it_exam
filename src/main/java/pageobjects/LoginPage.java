@@ -31,7 +31,7 @@ public class LoginPage extends BasePage {
         return this;
     }
 
-    public LoginPage filUserPassword(String userPassword) {
+    public LoginPage fillUserPassword(String userPassword) {
         userPasswordField.setValue(userPassword);
         return this;
     }

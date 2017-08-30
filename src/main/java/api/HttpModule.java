@@ -16,7 +16,7 @@ public class HttpModule {
 
     private static final String URI_LOGIN = "https://test-maven.cogniance.com/api/v1/login";
 
-    public String methodPostLogin() throws IOException {
+    public static String methodPostLogin() throws IOException {
 
         OkHttpClient client = new OkHttpClient.Builder()
                 .addInterceptor(loggingInterceptor)

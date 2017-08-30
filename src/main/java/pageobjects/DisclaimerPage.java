@@ -13,7 +13,7 @@ public class DisclaimerPage extends BasePage {
     private MobileElement iAgreeButton;
 
     public InfoPage clickIAgreeButtonIfDisplayed() throws IOException {
-        if (new HttpModule().methodPostLogin().equals("true")) {
+        if (HttpModule.methodPostLogin().equals("true")) {
             waitForElement(iAgreeButton);
 
             iAgreeButton.click();

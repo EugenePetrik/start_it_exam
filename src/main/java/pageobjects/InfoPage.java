@@ -38,7 +38,7 @@ public class InfoPage extends BasePage {
     }
 
     public InfoPage closeAdIfDisplayed() {
-        if (closeAdsButton.isDisplayed() == true) {
+        if (closeAdsButton.isDisplayed()) {
             waitForElement(closeAdsButton);
 
             closeAdsButton.click();
