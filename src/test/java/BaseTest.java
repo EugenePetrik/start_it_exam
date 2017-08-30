@@ -54,8 +54,8 @@ public class BaseTest {
             driver = new AndroidDriver<>(remoteAddress, desiredCapabilities);
         } else if (platform.equals(Platform.IOS)) {
             File classPathRoot = new File(System.getProperty("user.dir"));
-            File appDir = new File(classPathRoot, "native_app/iOS");
-            File app = new File(appDir, "some_app");
+            File appDir = new File(classPathRoot, "/app/iOS");
+            File app = new File(appDir, "Maven.app");
 
             DesiredCapabilities desiredCapabilities = new DesiredCapabilities();
             desiredCapabilities.setCapability(MobileCapabilityType.PLATFORM_NAME, MobilePlatform.IOS);
