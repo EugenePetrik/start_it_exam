@@ -85,6 +85,9 @@ public class RegisterPage extends BasePage {
     @AndroidFindBy(xpath = "//android.widget.Button[@text=\"Sign Up\"]")
     private MobileElement signUp;
 
+    @AndroidFindBy(className = "android.widget.TextView")
+    private MobileElement errorText;
+
     private DateFormat sdf = new SimpleDateFormat("yyyy_MM_dd_HH_mm_ss");
     private Date date = new Date();
     private final String USERNAME = sdf.format(date) + "@example.com";
@@ -222,6 +225,10 @@ public class RegisterPage extends BasePage {
     public ConfirmRegisterPage clickSignUpUser() {
         signUp.click();
         return new ConfirmRegisterPage(driver);
+    }
+
+    public boolean isErrorTextDisplaed(String errorMessage) {
+        return errorText.getText().contains(errorMessage);
     }
 
     public RegisterPage(AppiumDriver<MobileElement> driver) {

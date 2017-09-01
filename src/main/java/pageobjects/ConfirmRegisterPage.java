@@ -15,6 +15,9 @@ public class ConfirmRegisterPage extends BasePage {
     @AndroidFindBy(id = "com.medicom.maven.debug:id/account_created_message")
     private MobileElement accountCreatedMessage;
 
+    @AndroidFindBy(id = "com.medicom.maven.debug:id/resend_validation_link")
+    private MobileElement emailIsNotReceivedButton;
+
     public boolean isAccountCreatedIconDisplayed() {
         return accountCreatedIcon.isDisplayed();
     }
@@ -24,8 +27,11 @@ public class ConfirmRegisterPage extends BasePage {
     }
 
     public boolean isAccountCreatedMessageDisplayed(String message) {
-        String getMessage = accountCreatedMessage.getText();
-        return getMessage.contains(message);
+        return accountCreatedMessage.getText().contains(message);
+    }
+
+    public boolean isEmailIsNotReceivedButtonDisplayed() {
+        return emailIsNotReceivedButton.isDisplayed();
     }
 
     public ConfirmRegisterPage(AppiumDriver<MobileElement> driver) {
