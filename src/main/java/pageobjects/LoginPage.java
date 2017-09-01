@@ -4,10 +4,12 @@ import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileElement;
 import io.appium.java_client.pagefactory.AndroidFindBy;
 
+import java.util.PrimitiveIterator;
+
 public class LoginPage extends BasePage {
 
     @AndroidFindBy(id = "android:id/button2")
-    private MobileElement closePopup;
+    private MobileElement dismissPopUp;
 
     @AndroidFindBy(id = "com.medicom.maven.debug:id/sign_up")
     private MobileElement signUpButton;
@@ -21,8 +23,20 @@ public class LoginPage extends BasePage {
     @AndroidFindBy(id = "com.medicom.maven.debug:id/login")
     private MobileElement logInButton;
 
-    public LoginPage closePopUp() {
-        closePopup.click();
+    @AndroidFindBy(id = "com.medicom.maven.debug:id/action_bar_root")
+    private MobileElement loginFailedPopUp;
+
+    @AndroidFindBy(id = "com.medicom.maven.debug:id/alertTitle")
+    private MobileElement loginIsFailedText;
+
+    @AndroidFindBy(id = "android:id/message")
+    private MobileElement emailAndOrPasswordIncorrectText;
+
+    @AndroidFindBy(className = "android.widget.Button")
+    private MobileElement buttonOkInloginFailedPopUp;
+
+    public LoginPage closeDismissPopUp() {
+        dismissPopUp.click();
         return this;
     }
 
@@ -44,6 +58,23 @@ public class LoginPage extends BasePage {
     public RegisterPage clickToSignUpButton() {
         signUpButton.click();
         return new RegisterPage(driver);
+    }
+
+    public boolean isLoginFailedPopUpDisplayed() {
+        return loginFailedPopUp.isDisplayed();
+    }
+
+    public boolean isLoginIsFailedTextDisplayed(String logInFailed) {
+        return loginIsFailedText.getText().equals(logInFailed);
+    }
+
+    public boolean isEmailAndOrPasswordIncorrectTextDisplayed(String emailAndOrPasswordIncorrect) {
+        return emailAndOrPasswordIncorrectText.getText().equals(emailAndOrPasswordIncorrect);
+    }
+
+    public LoginPage closeloginFailedPopUp() {
+        buttonOkInloginFailedPopUp.click();
+        return this;
     }
 
     public LoginPage(AppiumDriver<MobileElement> driver) {

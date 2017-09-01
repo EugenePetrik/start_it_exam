@@ -85,9 +85,9 @@ public class RegisterPage extends BasePage {
     @AndroidFindBy(xpath = "//android.widget.Button[@text=\"Sign Up\"]")
     private MobileElement signUp;
 
-    private final DateFormat sdf = new SimpleDateFormat("yyyy_MM_dd_HH_mm_ss");
-    Date date = new Date();
-    public final String USERNAME = sdf.format(date) + "@example.com";
+    private DateFormat sdf = new SimpleDateFormat("yyyy_MM_dd_HH_mm_ss");
+    private Date date = new Date();
+    private final String USERNAME = sdf.format(date) + "@example.com";
 
     public RegisterPage fillFirstName(String name) {
         firstNameField.setValue(name);
@@ -99,8 +99,12 @@ public class RegisterPage extends BasePage {
         return this;
     }
 
-    public RegisterPage fillUserEmail() {
-        emailField.setValue(USERNAME);
+    public RegisterPage fillUserEmail(String userEmail) {
+        if (userEmail.isEmpty()) {
+            emailField.setValue(USERNAME);
+        } else {
+            emailField.setValue(userEmail);
+        }
         return this;
     }
 
