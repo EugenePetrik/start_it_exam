@@ -23,7 +23,7 @@ public class RegisterTest extends BaseTest {
                 .selectCountry("Ukraine")
                 .fillPhoneNumber("0981234567")
                 .clickButtonContinue()
-                .fillalternativeEmail()
+                .fillAlternativeEmail()
                 .fillAlternativePhoneNumber("0984561237")
                 .selectGender("Male")
                 .fillAddress("Avenue Street 15/A")

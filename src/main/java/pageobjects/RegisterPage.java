@@ -88,10 +88,6 @@ public class RegisterPage extends BasePage {
     @AndroidFindBy(className = "android.widget.TextView")
     private MobileElement errorText;
 
-    private DateFormat sdf = new SimpleDateFormat("yyyy_MM_dd_HH_mm_ss");
-    private Date date = new Date();
-    private final String USERNAME = sdf.format(date) + "@example.com";
-
     public RegisterPage fillFirstName(String name) {
         firstNameField.setValue(name);
         return this;
@@ -104,7 +100,7 @@ public class RegisterPage extends BasePage {
 
     public RegisterPage fillUserEmail(String userEmail) {
         if (userEmail.isEmpty()) {
-            emailField.setValue(USERNAME);
+            emailField.setValue(RegisterPage.createUserNameForRegister());
         } else {
             emailField.setValue(userEmail);
         }
@@ -180,8 +176,8 @@ public class RegisterPage extends BasePage {
         return this;
     }
 
-    public RegisterPage fillalternativeEmail() {
-        alternativeEmailField.setValue(USERNAME);
+    public RegisterPage fillAlternativeEmail() {
+        alternativeEmailField.setValue(RegisterPage.createUserNameForRegister());
         return this;
     }
 
