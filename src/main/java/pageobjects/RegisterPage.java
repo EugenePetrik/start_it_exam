@@ -4,10 +4,6 @@ import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileElement;
 import io.appium.java_client.pagefactory.AndroidFindBy;
 
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-
 public class RegisterPage extends BasePage {
 
     @AndroidFindBy(id = "com.medicom.maven.debug:id/first_name_field")

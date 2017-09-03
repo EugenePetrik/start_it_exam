@@ -5,8 +5,6 @@ import pageobjects.ConfirmRegisterPage;
 import pageobjects.LoginPage;
 import pageobjects.RegisterPage;
 
-import javax.print.DocFlavor;
-
 public class RegisterTest extends BaseTest {
 
     @Test(description = "Register user with correct params")

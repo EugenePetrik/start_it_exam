@@ -4,8 +4,6 @@ import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileElement;
 import io.appium.java_client.pagefactory.AndroidFindBy;
 
-import java.util.PrimitiveIterator;
-
 public class LoginPage extends BasePage {
 
     @AndroidFindBy(id = "android:id/button2")
