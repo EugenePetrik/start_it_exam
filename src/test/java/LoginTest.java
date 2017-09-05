@@ -7,7 +7,7 @@ import pageobjects.LoginPage;
 
 public class LoginTest extends BaseTest {
 
-    @Test(description = "Login with correct credentials")
+    @Test(description = "Log In with correct credentials")
     public void loginWithCorrectCredentials() throws Exception {
 
        new LoginPage(driver)
@@ -34,15 +34,13 @@ public class LoginTest extends BaseTest {
         };
     }
 
-    @Test(description = "Login with incorrect credentials", dataProvider = "credentials")
+    @Test(description = "Log In with incorrect credentials", dataProvider = "credentials")
     public void loginWithIncorrectCredentials(String email, String password) throws Exception {
+
         LoginPage loginUserPage = new LoginPage(driver);
 
-        if (loginUserPage.isDismissPopUpDisplayed()) {
-            loginUserPage.closeDismissPopUp();
-        }
-
         loginUserPage
+                .closeDismissPopUp()
                 .fillUserEmail(email)
                 .fillUserPassword(password)
                 .clickTheButtonLogIn();
@@ -56,6 +54,7 @@ public class LoginTest extends BaseTest {
 
         loginUserPage
                 .closeloginFailedPopUp();
+
     }
 
 }

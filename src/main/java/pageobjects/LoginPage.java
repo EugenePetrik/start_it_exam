@@ -34,12 +34,12 @@ public class LoginPage extends BasePage {
     private MobileElement buttonOkInloginFailedPopUp;
 
     public LoginPage closeDismissPopUp() {
-        dismissPopUp.click();
-        return this;
-    }
+        if (dismissPopUp.isDisplayed()) {
+            waitForElement(dismissPopUp);
 
-    public boolean isDismissPopUpDisplayed() {
-        return dismissPopUp.isDisplayed();
+            dismissPopUp.click();
+        }
+        return this;
     }
 
     public LoginPage fillUserEmail(String userEmail) {

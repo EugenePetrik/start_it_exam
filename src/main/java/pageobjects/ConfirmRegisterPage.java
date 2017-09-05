@@ -18,6 +18,9 @@ public class ConfirmRegisterPage extends BasePage {
     @AndroidFindBy(id = "com.medicom.maven.debug:id/resend_validation_link")
     private MobileElement emailIsNotReceivedButton;
 
+    @AndroidFindBy(id = "com.medicom.maven.debug:id/login")
+    private MobileElement logInButton;
+
     public boolean isAccountCreatedIconDisplayed() {
         return accountCreatedIcon.isDisplayed();
     }
@@ -32,6 +35,11 @@ public class ConfirmRegisterPage extends BasePage {
 
     public boolean isEmailIsNotReceivedButtonDisplayed() {
         return emailIsNotReceivedButton.isDisplayed();
+    }
+
+    public InfoPage clickTheButtonLogIn() {
+        logInButton.click();
+        return new InfoPage(driver);
     }
 
     public ConfirmRegisterPage(AppiumDriver<MobileElement> driver) {

@@ -21,22 +21,6 @@ public class InfoPage extends BasePage {
     @AndroidFindBy(id = "com.medicom.maven.debug:id/page_secondary_text")
     private MobileElement pageSecondaryText;
 
-    public boolean isPageIconDisplayed() {
-        return pageIcon.isDisplayed();
-    }
-
-    public boolean isPageCounterDisplayed(String counter) {
-        return pageCounter.getText().equals(counter);
-    }
-
-    public boolean isPrimaryTextDisplayed(String primaryText) {
-        return pagePrimaryText.getText().equals(primaryText);
-    }
-
-    public boolean isSecondaryTextDisplayed(String secondaryText) {
-        return pageSecondaryText.getText().equals(secondaryText);
-    }
-
     public InfoPage closeAdIfDisplayed() {
         if (closeAdsButton.isDisplayed()) {
             waitForElement(closeAdsButton);
