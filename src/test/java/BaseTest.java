@@ -36,7 +36,7 @@ public class BaseTest {
         }
     }
 
-    @BeforeMethod
+    @BeforeTest
     public void setUp() throws Exception {
         URL remoteAddress = new URL("http://127.0.0.1:4723/wd/hub");
 
@@ -74,7 +74,7 @@ public class BaseTest {
         driver.manage().timeouts().implicitlyWait(15, SECONDS);
     }
 
-    @AfterMethod
+    @AfterTest
     public void tearDown() throws Exception {
         driver.quit();
     }

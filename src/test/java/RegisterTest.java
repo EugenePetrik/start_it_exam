@@ -1,9 +1,7 @@
 import org.testng.Assert;
-import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import pageobjects.ConfirmRegisterPage;
 import pageobjects.LoginPage;
-import pageobjects.RegisterPage;
 
 public class RegisterTest extends BaseTest {
 
@@ -14,7 +12,7 @@ public class RegisterTest extends BaseTest {
                 .clickToSignUpButton()
                 .fillFirstName("First name")
                 .fillLastName("Last name")
-                .fillUserEmail("")              // auto generate user email
+                .fillUserEmail()
                 .fillPassword("qwerty@13")
                 .fillConfirmPassword("qwerty@13")
                 .selectDiagnosis("None")
@@ -37,32 +35,6 @@ public class RegisterTest extends BaseTest {
                 .isAccountCreatedMessageDisplayed("Please, check your inbox for further instructions."));
         Assert.assertTrue(confirmPage
                 .isEmailIsNotReceivedButtonDisplayed());
-    }
-
-    @DataProvider
-    public Object[][] registerCredentials() {
-        return new Object[][] {
-                { "", "Last name", "email@example.com", "qwerty@13", "qwerty@13", "None", "Ukraine", "0981234567", "This field is required"}
-        };
-    }
-
-    @Test(description = "Register user with incorrect params", dataProvider = "registerCredentials")
-    public void registerAsUserWithIncorrectParams(String firstName, String lastName, String email, String pass, String passConfirm, String diagnos, String country, String phone, String errorMessage) throws Exception {
-        new LoginPage(driver)
-                .closeDismissPopUp()
-                .clickToSignUpButton()
-                .fillFirstName(firstName)
-                .fillLastName(lastName)
-                .fillUserEmail(email)
-                .fillPassword(pass)
-                .fillConfirmPassword(passConfirm)
-                .selectDiagnosis(diagnos)
-                .selectCountry(country)
-                .fillPhoneNumber(phone)
-                .clickButtonContinue();
-
-        RegisterPage registerPage = new RegisterPage(driver);
-        Assert.assertTrue(registerPage.isErrorTextDisplaed(errorMessage));
     }
 
 }

@@ -81,9 +81,6 @@ public class RegisterPage extends BasePage {
     @AndroidFindBy(xpath = "//android.widget.Button[@text=\"Sign Up\"]")
     private MobileElement signUp;
 
-    @AndroidFindBy(className = "android.widget.TextView")
-    private MobileElement errorText;
-
     public RegisterPage fillFirstName(String name) {
         firstNameField.setValue(name);
         return this;
@@ -94,12 +91,8 @@ public class RegisterPage extends BasePage {
         return this;
     }
 
-    public RegisterPage fillUserEmail(String userEmail) {
-        if (userEmail.isEmpty()) {
-            emailField.setValue(RegisterPage.createUserNameForRegister());
-        } else {
-            emailField.setValue(userEmail);
-        }
+    public RegisterPage fillUserEmail() {
+        emailField.setValue(createUserNameForRegister());
         return this;
     }
 
@@ -173,7 +166,7 @@ public class RegisterPage extends BasePage {
     }
 
     public RegisterPage fillAlternativeEmail() {
-        alternativeEmailField.setValue(RegisterPage.createUserNameForRegister());
+        alternativeEmailField.setValue(createUserNameForRegister());
         return this;
     }
 
@@ -217,10 +210,6 @@ public class RegisterPage extends BasePage {
     public ConfirmRegisterPage clickSignUpUser() {
         signUp.click();
         return new ConfirmRegisterPage(driver);
-    }
-
-    public boolean isErrorTextDisplaed(String errorMessage) {
-        return errorText.getText().contains(errorMessage);
     }
 
     public RegisterPage(AppiumDriver<MobileElement> driver) {

@@ -38,8 +38,11 @@ public class LoginTest extends BaseTest {
     public void loginWithIncorrectCredentials(String email, String password) throws Exception {
         LoginPage loginUserPage = new LoginPage(driver);
 
+        if (loginUserPage.isDismissPopUpDisplayed()) {
+            loginUserPage.closeDismissPopUp();
+        }
+
         loginUserPage
-                .closeDismissPopUp()
                 .fillUserEmail(email)
                 .fillUserPassword(password)
                 .clickTheButtonLogIn();

@@ -38,12 +38,22 @@ public class LoginPage extends BasePage {
         return this;
     }
 
+    public boolean isDismissPopUpDisplayed() {
+        return dismissPopUp.isDisplayed();
+    }
+
     public LoginPage fillUserEmail(String userEmail) {
+        if (usernameFiled.getText().isEmpty()) {
+            usernameFiled.clear();
+        }
         usernameFiled.setValue(userEmail);
         return this;
     }
 
     public LoginPage fillUserPassword(String userPassword) {
+        if (userPasswordField.getText().isEmpty()) {
+            userPasswordField.clear();
+        }
         userPasswordField.setValue(userPassword);
         return this;
     }
