@@ -22,7 +22,7 @@ public class HttpModule {
                 .addInterceptor(loggingInterceptor)
                 .build();
 
-        String json = "{\"login\":\"maventests+patient+20@gmail.com\", \"password\":\"Password11\"}";
+        String json = "{\"login\":\"maventests+patient+1@gmail.com\", \"password\":\"Password11\"}";
 
         RequestBody body = RequestBody.create(MediaTypeJson, json);
 

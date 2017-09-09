@@ -6,7 +6,7 @@ import io.appium.java_client.pagefactory.AndroidFindBy;
 
 public class InfoPage extends BasePage {
 
-    @AndroidFindBy(xpath = "//android.widget.ImageButton[@content-desc=\"Navigate up\"]")
+    @AndroidFindBy(accessibility = "Navigate up")
     private MobileElement closeAdsButton;
 
     @AndroidFindBy(id = "com.medicom.maven.debug:id/page_icon")
