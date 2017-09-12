@@ -32,7 +32,7 @@ public class BaseTest {
         if (platformVal != null) {
             platform = platformVal.contains("ios") ? IOS : ANDROID;
         } else {
-            platform = ANDROID;
+            platform = IOS;
         }
     }
 

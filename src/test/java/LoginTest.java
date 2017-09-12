@@ -1,22 +1,24 @@
+import enums.Platform;
 import org.testng.Assert;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
-import pageobjects.AppMainPage;
-import pageobjects.DisclaimerPage;
-import pageobjects.LoginPage;
+import pageobjects.*;
 
 public class LoginTest extends BaseTest {
 
     @Test(description = "Log In with correct credentials")
     public void loginWithCorrectCredentials() throws Exception {
 
-       new LoginPage(driver)
-                .closeDismissPopUp()
+        LoginPage loginUserPage = new LoginPage(driver);
+
+        if (BasePage.platform.equals(Platform.ANDROID)) {
+            loginUserPage.closeDismissPopUp();
+        }
+
+        loginUserPage
                 .fillUserEmail("maventests+patient+1@gmail.com")
                 .fillUserPassword("Password11")
-                .clickTheButtonLogIn();
-
-        new DisclaimerPage(driver)
+                .clickTheButtonLogIn()
                 .clickIAgreeButtonIfDisplayed()
                 .closeAdIfDisplayed();
 
@@ -39,8 +41,11 @@ public class LoginTest extends BaseTest {
 
         LoginPage loginUserPage = new LoginPage(driver);
 
+        if (BasePage.platform.equals(Platform.ANDROID)) {
+            loginUserPage.closeDismissPopUp();
+        }
+
         loginUserPage
-                .closeDismissPopUp()
                 .fillUserEmail(email)
                 .fillUserPassword(password)
                 .clickTheButtonLogIn();
@@ -54,7 +59,5 @@ public class LoginTest extends BaseTest {
 
         loginUserPage
                 .closeloginFailedPopUp();
-
     }
-
 }

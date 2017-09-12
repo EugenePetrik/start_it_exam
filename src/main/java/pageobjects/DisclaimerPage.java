@@ -4,11 +4,13 @@ import api.HttpModule;
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileElement;
 import io.appium.java_client.pagefactory.AndroidFindBy;
+import io.appium.java_client.pagefactory.iOSFindBy;
 
 import java.io.IOException;
 
 public class DisclaimerPage extends BasePage {
 
+    @iOSFindBy(accessibility = "I agree")
     @AndroidFindBy(xpath = "//android.widget.RelativeLayout//android.widget.Button[@text=\"I AGREE\"]")
     private MobileElement iAgreeButton;
 
