@@ -16,14 +16,18 @@ public class LoginTest extends BaseTest {
         }
 
         loginUserPage
-                .fillUserEmail("maventests+patient+1@gmail.com")
+                .fillUserEmail("maventests+patient+20@gmail.com")
                 .fillUserPassword("Password11")
                 .clickTheButtonLogIn()
                 .clickIAgreeButtonIfDisplayed()
                 .closeAdIfDisplayed();
 
+        if (BasePage.platform.equals(Platform.IOS)) {
+            new SimplifyLoginPage(driver).clickSkipSimplifyLogin();
+        }
+
         Assert.assertTrue(new AppMainPage(driver)
-                .isPageTitleDisplayed("Patient1 Patient"));
+                .isPageTitleDisplayed("Patient20 Patient"));
     }
 
     @DataProvider

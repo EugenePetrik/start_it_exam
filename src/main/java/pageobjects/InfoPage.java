@@ -23,13 +23,10 @@ public class InfoPage extends BasePage {
     @AndroidFindBy(id = "com.medicom.maven.debug:id/page_secondary_text")
     private MobileElement pageSecondaryText;
 
-    public InfoPage closeAdIfDisplayed() {
-        if (closeAdsButton.isDisplayed()) {
-            waitForElement(closeAdsButton);
+    public AppMainPage closeAdIfDisplayed() {
+        if (closeAdsButton.isDisplayed()) closeAdsButton.click();
 
-            closeAdsButton.click();
-        }
-        return this;
+        return new AppMainPage(driver);
     }
 
     public InfoPage(AppiumDriver<MobileElement> driver) {
