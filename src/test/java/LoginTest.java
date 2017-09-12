@@ -11,9 +11,7 @@ public class LoginTest extends BaseTest {
 
         LoginPage loginUserPage = new LoginPage(driver);
 
-        if (BasePage.platform.equals(Platform.ANDROID)) {
-            loginUserPage.closeDismissPopUp();
-        }
+        if (BasePage.platform.equals(Platform.ANDROID)) loginUserPage.closeDismissPopUp();
 
         loginUserPage
                 .fillUserEmail("maventests+patient+20@gmail.com")
@@ -22,9 +20,7 @@ public class LoginTest extends BaseTest {
                 .clickIAgreeButtonIfDisplayed()
                 .closeAdIfDisplayed();
 
-        if (BasePage.platform.equals(Platform.IOS)) {
-            new SimplifyLoginPage(driver).clickSkipSimplifyLogin();
-        }
+        if (BasePage.platform.equals(Platform.IOS)) new SimplifyLoginPage(driver).clickSkipSimplifyLogin();
 
         Assert.assertTrue(new AppMainPage(driver)
                 .isPageTitleDisplayed("Patient20 Patient"));
@@ -45,9 +41,7 @@ public class LoginTest extends BaseTest {
 
         LoginPage loginUserPage = new LoginPage(driver);
 
-        if (BasePage.platform.equals(Platform.ANDROID)) {
-            loginUserPage.closeDismissPopUp();
-        }
+        if (BasePage.platform.equals(Platform.ANDROID)) loginUserPage.closeDismissPopUp();
 
         loginUserPage
                 .fillUserEmail(email)

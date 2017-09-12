@@ -1,17 +1,18 @@
+import enums.Platform;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-import pageobjects.AppMainPage;
-import pageobjects.ConfirmRegisterPage;
-import pageobjects.DisclaimerPage;
-import pageobjects.LoginPage;
+import pageobjects.*;
 
 public class RegisterTest extends BaseTest {
 
     @Test(description = "Register user with correct params")
     public void registerAsUserWithCorrectParams() throws Exception {
 
-        new LoginPage(driver)
-                .closeDismissPopUp()
+        LoginPage loginUserPage = new LoginPage(driver);
+
+        if (BasePage.platform.equals(Platform.ANDROID)) loginUserPage.closeDismissPopUp();
+
+        loginUserPage
                 .clickToSignUpButton()
                 .fillFirstName("First name")
                 .fillLastName("Last name")
@@ -30,8 +31,10 @@ public class RegisterTest extends BaseTest {
                 .clickSignUpUser();
 
         ConfirmRegisterPage confirmPage = new ConfirmRegisterPage(driver);
-        Assert.assertTrue(confirmPage
+
+        if (BasePage.platform.equals(Platform.ANDROID)) Assert.assertTrue(confirmPage
                 .isAccountCreatedIconDisplayed());
+
         Assert.assertTrue(confirmPage
                 .isAccountCreatedTitleDisplayed("Check your mailbox."));
         Assert.assertTrue(confirmPage
@@ -44,8 +47,11 @@ public class RegisterTest extends BaseTest {
     @Test(description = "Register user with correct params and Log In")
     public void registerAsUserWithCorrectParamsAndLogIn() throws Exception {
 
-        new LoginPage(driver)
-                .closeDismissPopUp()
+        LoginPage loginUserPage = new LoginPage(driver);
+
+        if (BasePage.platform.equals(Platform.ANDROID)) loginUserPage.closeDismissPopUp();
+
+        loginUserPage
                 .clickToSignUpButton()
                 .fillFirstName("First name")
                 .fillLastName("Last name")
@@ -73,8 +79,10 @@ public class RegisterTest extends BaseTest {
                 .clickIAgreeButtonIfDisplayed()
                 .closeAdIfDisplayed();
 
+        if (BasePage.platform.equals(Platform.IOS)) new SimplifyLoginPage(driver).clickSkipSimplifyLogin();
+
         Assert.assertTrue(new AppMainPage(driver)
-                .isPageTitleDisplayed("Patient1 Patient"));
+                .isPageTitleDisplayed("Patient20 Patient"));
 
     }
 
