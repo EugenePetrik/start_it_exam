@@ -143,12 +143,10 @@ public class RegisterPage extends BasePage {
                 diagnosisHemophiliaAField.click();
                 break;
             }
-
             case "Hemophilia B" : {
                 diagnosisHemophiliaBField.click();
                 break;
             }
-
             case "None" : {
                 diagnosisNoneField.click();
                 break;
@@ -165,17 +163,14 @@ public class RegisterPage extends BasePage {
                 coutryUSAField.click();
                 break;
             }
-
             case "United Kingdom" : {
                 coutryUKField.click();
                 break;
             }
-
             case "France" : {
                 coutryFranceField.click();
                 break;
             }
-
             case "Ukraine" : {
                 coutryUkraineField.click();
                 break;
@@ -218,12 +213,10 @@ public class RegisterPage extends BasePage {
                 genderNoneField.click();
                 break;
             }
-
             case "Male" : {
                 genderMaleField.click();
                 break;
             }
-
             case "Female" : {
                 genderFemaleField.click();
                 break;

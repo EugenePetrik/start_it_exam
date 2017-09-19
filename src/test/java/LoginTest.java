@@ -9,18 +9,15 @@ public class LoginTest extends BaseTest {
     @Test(description = "Log In with correct credentials")
     public void loginWithCorrectCredentials() throws Exception {
 
-        LoginPage loginUserPage = new LoginPage(driver);
-
-        if (BasePage.platform.equals(Platform.ANDROID)) loginUserPage.closeDismissPopUp();
-
-        loginUserPage
+            new LoginPage(driver)
+                .closeDismissPopUp()
                 .fillUserEmail("maventests+patient+20@gmail.com")
                 .fillUserPassword("Password11")
                 .clickTheButtonLogIn()
                 .clickIAgreeButtonIfDisplayed()
                 .closeAdIfDisplayed();
 
-        if (BasePage.platform.equals(Platform.IOS)) new SimplifyLoginPage(driver).clickSkipSimplifyLogin();
+        new SimplifyLoginPage(driver).clickSkipSimplifyLogin();
 
         Assert.assertTrue(new AppMainPage(driver)
                 .isPageTitleDisplayed("Patient20 Patient"));
@@ -39,14 +36,13 @@ public class LoginTest extends BaseTest {
     @Test(description = "Log In with incorrect credentials", dataProvider = "credentials")
     public void loginWithIncorrectCredentials(String email, String password) throws Exception {
 
-        LoginPage loginUserPage = new LoginPage(driver);
-
-        if (BasePage.platform.equals(Platform.ANDROID)) loginUserPage.closeDismissPopUp();
-
-        loginUserPage
+        new LoginPage(driver)
+                .closeDismissPopUp()
                 .fillUserEmail(email)
                 .fillUserPassword(password)
                 .clickTheButtonLogIn();
+
+        LoginPage loginUserPage = new LoginPage(driver);
 
         Assert.assertTrue(loginUserPage
                 .isLoginFailedPopUpDisplayed());
@@ -54,8 +50,5 @@ public class LoginTest extends BaseTest {
                 .isLoginIsFailedTextDisplayed("Log In failed"));
         Assert.assertTrue(loginUserPage
                 .isEmailAndOrPasswordIncorrectTextDisplayed("Email and/or password incorrect!"));
-
-        loginUserPage
-                .closeloginFailedPopUp();
     }
 }

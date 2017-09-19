@@ -1,5 +1,6 @@
 package pageobjects;
 
+import enums.Platform;
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileElement;
 import io.appium.java_client.pagefactory.iOSFindBy;
@@ -10,8 +11,9 @@ public class SimplifyLoginPage extends BasePage {
     private MobileElement skipSimplifyLogin;
 
     public AppMainPage clickSkipSimplifyLogin() {
-        if (skipSimplifyLogin.isDisplayed()) skipSimplifyLogin.click();
-
+        if (BasePage.platform.equals(Platform.IOS)) {
+            if (skipSimplifyLogin.isDisplayed()) skipSimplifyLogin.click();
+        }
         return new AppMainPage(driver);
     }
 

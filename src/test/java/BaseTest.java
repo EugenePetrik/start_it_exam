@@ -8,7 +8,6 @@ import io.appium.java_client.remote.MobilePlatform;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.AfterTest;
-import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeTest;
 
 import java.io.File;
@@ -36,7 +35,7 @@ public class BaseTest {
         }
     }
 
-    @BeforeMethod
+    @BeforeTest
     public void setUp() throws Exception {
         URL remoteAddress = new URL("http://127.0.0.1:4723/wd/hub");
 
@@ -74,9 +73,15 @@ public class BaseTest {
         driver.manage().timeouts().implicitlyWait(15, SECONDS);
     }
 
-    @AfterMethod
+    @AfterTest
     public void tearDown() throws Exception {
         driver.quit();
+    }
+
+    @AfterMethod
+    public void reloadApp() {
+        driver.closeApp();
+        driver.launchApp();
     }
 
 }

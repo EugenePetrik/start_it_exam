@@ -1,5 +1,6 @@
 package pageobjects;
 
+import enums.Platform;
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileElement;
 import io.appium.java_client.pagefactory.AndroidFindBy;
@@ -43,23 +44,18 @@ public class LoginPage extends BasePage {
     private MobileElement buttonOkInloginFailedPopUp;
 
     public LoginPage closeDismissPopUp() {
-        if (dismissPopUp.isDisplayed()) dismissPopUp.click();
-
+        if (BasePage.platform.equals(Platform.ANDROID)) {
+            if (dismissPopUp.isDisplayed()) dismissPopUp.click();
+        }
         return this;
     }
 
     public LoginPage fillUserEmail(String userEmail) {
-        if (usernameFiled.getText().isEmpty()) {
-            usernameFiled.clear();
-        }
         usernameFiled.setValue(userEmail);
         return this;
     }
 
     public LoginPage fillUserPassword(String userPassword) {
-        if (userPasswordField.getText().isEmpty()) {
-            userPasswordField.clear();
-        }
         userPasswordField.setValue(userPassword);
         return this;
     }
@@ -84,11 +80,6 @@ public class LoginPage extends BasePage {
 
     public boolean isEmailAndOrPasswordIncorrectTextDisplayed(String emailAndOrPasswordIncorrect) {
         return emailAndOrPasswordIncorrectText.getText().equals(emailAndOrPasswordIncorrect);
-    }
-
-    public LoginPage closeloginFailedPopUp() {
-        buttonOkInloginFailedPopUp.click();
-        return this;
     }
 
     public LoginPage(AppiumDriver<MobileElement> driver) {

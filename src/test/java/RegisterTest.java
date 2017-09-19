@@ -8,11 +8,8 @@ public class RegisterTest extends BaseTest {
     @Test(description = "Register user with correct params")
     public void registerAsUserWithCorrectParams() throws Exception {
 
-        LoginPage loginUserPage = new LoginPage(driver);
-
-        if (BasePage.platform.equals(Platform.ANDROID)) loginUserPage.closeDismissPopUp();
-
-        loginUserPage
+         new LoginPage(driver)
+                .closeDismissPopUp()
                 .clickToSignUpButton()
                 .fillFirstName("First name")
                 .fillLastName("Last name")
@@ -47,11 +44,8 @@ public class RegisterTest extends BaseTest {
     @Test(description = "Register user with correct params and Log In")
     public void registerAsUserWithCorrectParamsAndLogIn() throws Exception {
 
-        LoginPage loginUserPage = new LoginPage(driver);
-
-        if (BasePage.platform.equals(Platform.ANDROID)) loginUserPage.closeDismissPopUp();
-
-        loginUserPage
+        new LoginPage(driver)
+                .closeDismissPopUp()
                 .clickToSignUpButton()
                 .fillFirstName("First name")
                 .fillLastName("Last name")
@@ -71,7 +65,7 @@ public class RegisterTest extends BaseTest {
                 .clickTheButtonLogIn();
 
         new LoginPage(driver)
-                .fillUserEmail("maventests+patient+1@gmail.com")
+                .fillUserEmail("maventests+patient+20@gmail.com")
                 .fillUserPassword("Password11")
                 .clickTheButtonLogIn();
 
@@ -79,7 +73,7 @@ public class RegisterTest extends BaseTest {
                 .clickIAgreeButtonIfDisplayed()
                 .closeAdIfDisplayed();
 
-        if (BasePage.platform.equals(Platform.IOS)) new SimplifyLoginPage(driver).clickSkipSimplifyLogin();
+        new SimplifyLoginPage(driver).clickSkipSimplifyLogin();
 
         Assert.assertTrue(new AppMainPage(driver)
                 .isPageTitleDisplayed("Patient20 Patient"));
